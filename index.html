@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of life</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <section class="game-window">
+                <canvas class="game-window__canvas" id="canvas" ></canvas>
+            </section>
+            <section class="control-panel">
+                <div class="main-control">
+                    <button class="main-control__button" id="random">Random</button>
+                    <button class="main-control__button" id="run">Run</button>
+                    <button class="main-control__button" id="stop">Stop</button>
+                    <button class="main-control__button" id="step">Step over</button>
+                    <button class="main-control__button" id="reset">Reset</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

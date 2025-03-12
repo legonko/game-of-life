@@ -1,0 +1,203 @@
+:root{
+    --button-color: #e7e7e7;
+    --button-color-hover: #dddbdb;
+    --color-bg: #fff;
+    --color-black: #000;
+
+    --border-radius: 10px;
+    --inp-btn-height: 30px;
+
+    --transition-duration: 0.2s;
+
+    --font-family: 'Montserrat', sans-serif;
+    --font-basic: 18px;
+    --font-small: 14px;
+
+}
+
+
+body{
+    background-color: var(--color-bg);
+    font-family: var(--font-family);
+    color: var(--color-black);
+    font-size: var(--font-basic);
+    line-height: 1.5;
+    padding-inline: 30px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+}
+
+button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: var(--inp-btn-height);
+    width: 20vw;
+
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--button-color);
+
+    font: inherit;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+/* button:hover {
+    background-color: var(--button-color-hover);
+} */
+
+a, button, input{
+    transition-duration: var(--transition-duration);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 20px;
+    gap: 20px;
+    /* font-size: var(--font-size-normal); */
+}
+
+.game-window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    overflow: hidden;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    /* overflow: hidden; */
+}
+.main-control{
+    display: flex;
+    padding-inline: 10%;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+@media (hover: hover) {
+    button:hover {
+        background-color: var(--button-color-hover);
+    }
+}
+
+@media (hover: none) {
+    button:active {
+        background-color: var(--button-color-hover);
+    }
+}
+
+@media (max-width: 2560px) {
+    button {
+        max-width: 14vw;
+        height: 62px;
+        font-size: 26px;
+    }
+    .main-control {
+        gap: 30px
+    }
+
+}
+
+@media (max-width: 1440px) {
+    button {
+        max-width: 16vw;
+        height: 42px; 
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    button {
+        max-width: 16vw;
+        font-size: 18px;
+    }
+    .main-control {
+        gap: 12px
+    }
+
+}
+
+@media (max-width: 768px) {
+    button {
+        font-size: 14px;
+        max-width: 16vw;
+        height: 28px;
+    }
+
+}
+
+@media (max-width: 680px) {
+    
+    button {
+        font-size: 11px;
+        height: 24px;
+        width: 16vw;
+    }
+    .container {
+        gap: 10px
+    }
+
+    .main-control {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        font-size: 7px;
+        height: 20px;
+        max-width: 14vw;
+    }
+    .container {
+        gap: 10px
+    }
+    .main-control {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 376px) {
+    button {
+        font-size: 5px;
+        height: 14px;
+        max-width: 14vw;
+    }
+    .container {
+        gap: 10px
+    }
+    .main-control {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    button {
+        font-size: 5px;
+        height: 12px;
+        max-width: 12vw;
+    }
+    .container {
+        gap: 8px
+    }
+    .main-control {
+        gap: 6px;
+    }
+}
