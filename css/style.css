@@ -3,9 +3,13 @@
     --button-color-hover: #dddbdb;
     --color-bg: #fff;
     --color-black: #000;
+    --color-range-bg: #dddbdb;
+    --color-range-main: #bfe677;
 
     --border-radius: 10px;
     --inp-btn-height: 30px;
+    --inp-range-height: 12px;
+    --inp-thumb-size: 22px;
 
     --transition-duration: 0.2s;
 
@@ -30,29 +34,55 @@ h1, h2, h3, h4, h5, h6{
 }
 
 button{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    height: var(--inp-btn-height);
-    width: 20vw;
-
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--button-color);
-
-    font: inherit;
-    font-weight: 400;
-    font-size: 0.9em;
 }
-
-/* button:hover {
-    background-color: var(--button-color-hover);
-} */
 
 a, button, input{
     transition-duration: var(--transition-duration);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none; 
+    cursor: pointer;
+    outline: none;
+    overflow: visible;
+    border-radius: 16px;
+    background: linear-gradient(to right, #b2e673 50%, #ddd 50%);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: var(--inp-range-height);
+    border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: var(--inp-range-height);
+    background: var(--color-range-bg);
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: var(--inp-thumb-size);
+    width: var(--inp-thumb-size);
+    background-color: var(--color-bg);
+    border-radius: 50%;
+    margin-top: -5px;
+    border: 2px solid var(--color-range-main);
+    box-shadow: 0px 0 0 0px var(--color-range-main);
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: var(--inp-thumb-size);
+    width: var(--inp-thumb-size);
+    background-color: var(--color-bg);
+    border-radius: 50%;
+    border: 1px solid var(--color-range-main);
+    box-shadow: -407px 0 0 400px var(--color-range-main);
 }
 
 .container{
@@ -63,7 +93,6 @@ a, button, input{
 
     padding-top: 20px;
     gap: 20px;
-    /* font-size: var(--font-size-normal); */
 }
 
 .game-window {
@@ -77,18 +106,59 @@ a, button, input{
 
 .control-panel {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 100%;
-    /* overflow: hidden; */
 }
-.main-control{
+
+.main-control {
     display: flex;
-    padding-inline: 10%;
+    flex-direction: column;
+    padding-inline: 20px;
     justify-content: space-between;
-    gap: 10px;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 20px;
     width: 100%;
+    /* flex-wrap: wrap; */
+}
+
+.main-control__buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.main-control__item {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: var(--inp-btn-height);
+    width: 14vw; 
+
+    font: inherit;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+.speed-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6px;
+    flex: 1;
+    width: 50%;
+}
+
+#speed {
+    margin: 0px;
+    width: 100%;
+}
+
+.speed-slider-label {
+    order: -1;
 }
 
 @media (hover: hover) {
@@ -104,95 +174,123 @@ a, button, input{
 }
 
 @media (max-width: 2560px) {
-    button {
+    .main-control__item:not(.speed-control) {
         max-width: 14vw;
-        height: 62px;
-        font-size: 26px;
+        height: 80px;
+        font-size: 36px;
     }
     .main-control {
-        gap: 30px
+        gap: 30px;
+    }
+    .speed-control {
+        gap: 24px;
+        font-size: 36px;
     }
 
 }
 
 @media (max-width: 1440px) {
-    button {
-        max-width: 16vw;
-        height: 42px; 
+    .main-control__item:not(.speed-control) {
+        width: 16vw;
+        height: 46px; 
+        font-size: 20px;
+    }
+    .speed-control {
+        gap: 14px;
         font-size: 20px;
     }
 
 }
 
 @media (max-width: 1024px) {
-    button {
-        max-width: 16vw;
+    .main-control__item:not(.speed-control) {
+        height: 40px;
         font-size: 18px;
     }
     .main-control {
-        gap: 12px
+        gap: 20px
+    }
+    .speed-control {
+        gap: 10px;
+        font-size: 18px;
     }
 
 }
 
 @media (max-width: 768px) {
-    button {
+    .main-control__item:not(.speed-control) {
         font-size: 14px;
-        max-width: 16vw;
+        width: 14vw;
         height: 28px;
     }
+
+    .speed-control {
+        font-size: 14px;
+    }
+    
 
 }
 
 @media (max-width: 680px) {
-    
-    button {
+    .main-control__item:not(.speed-control) {
         font-size: 11px;
         height: 24px;
-        width: 16vw;
+        width: 14vw;
     }
+
+    .speed-control {
+        font-size: 11px;
+    }
+
+    #speed {
+        height: 6px;
+    }
+
     .container {
         gap: 10px
     }
 
     .main-control {
         gap: 6px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        height: 10px;
+        width: 10px;
+        margin-top: 1.5px;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        height: 10px;
+        width: 10px;
+        margin-top: 1.5px;
     }
 }
 
 @media (max-width: 480px) {
-    button {
+    .main-control__item:not(.speed-control) {
         font-size: 7px;
-        height: 20px;
-        max-width: 14vw;
+        height: 18px;
+        max-width: 12vw;
     }
-    .container {
-        gap: 10px
+    .speed-control {
+        font-size: 7px;
     }
-    .main-control {
-        gap: 6px;
+    #speed{
+        height: 4px;
+    }
+    .main-control__buttons{
+        gap: 8px;
     }
 }
 
 @media (max-width: 376px) {
-    button {
+    .main-control__item:not(.speed-control) {
         font-size: 5px;
         height: 14px;
-        max-width: 14vw;
+        max-width: 11vw;
     }
-    .container {
-        gap: 10px
-    }
-    .main-control {
-        gap: 6px;
-    }
-}
-
-@media (max-width: 320px) {
-    button {
+    .speed-control {
         font-size: 5px;
-        height: 12px;
-        max-width: 12vw;
     }
     .container {
         gap: 8px
@@ -200,4 +298,15 @@ a, button, input{
     .main-control {
         gap: 6px;
     }
+}
+
+@media (max-width: 320px) {
+    .main-control__item:not(.speed-control) {
+        height: 12px;
+        max-width: 12vw;
+    }
+    .container {
+        gap: 6px
+    }
+    
 }

@@ -6,6 +6,8 @@
     <title>Game of life</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
@@ -15,11 +17,17 @@
             </section>
             <section class="control-panel">
                 <div class="main-control">
-                    <button class="main-control__button" id="random">Random</button>
-                    <button class="main-control__button" id="run">Run</button>
-                    <button class="main-control__button" id="stop">Stop</button>
-                    <button class="main-control__button" id="step">Step over</button>
-                    <button class="main-control__button" id="reset">Reset</button>
+                    <ul class="main-control__buttons">
+                        <li><button class="main-control__item" id="random">Random</button></li>
+                        <li><button class="main-control__item" id="run">Run</button></li>
+                        <li><button class="main-control__item" id="stop">Stop</button></li>
+                        <li><button class="main-control__item" id="step">Step over</button></li>
+                        <li><button class="main-control__item" id="reset">Reset</button></li>
+                    </ul>
+                    <div class="speed-control main-control__item">
+                        <input type="range" id="speed" name="simulation-speed" min="10" max="200" />
+                        <label for="speed" class="speed-slider-label">Simulation speed</label>
+                    </div>
                 </div>
             </section>
         </div>

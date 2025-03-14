@@ -7,6 +7,7 @@ export class Game {
         this.gameMap = new GameMap(this.ctx, width, height);
         this.gameMap.createNewMap();
         this.running = false;
+        this.simulationSpeed = 200;
     }
 
     stop() {
@@ -38,7 +39,11 @@ export class Game {
         if (!this.running) return;
         this.gameMap.updateAllNeighbors();
         this.gameMap.updateMap();
-        setTimeout(() => this.gameloop(), 200);
+        setTimeout(() => this.gameloop(),this.simulationSpeed);
+    }
+
+    setSimulatoinSpeed(simulationSpeed) {
+        this.simulationSpeed = simulationSpeed;
     }
 
 }

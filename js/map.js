@@ -73,9 +73,10 @@ export class GameMap {
         }
     }
 
-    resizeCells() {
+    resizeCells(cellSize) {
         this.gameMap.map(row => {
             row.map(currentCell => {
+                currentCell.setCellSize(cellSize);
                 currentCell.drawCell();
             })
         })

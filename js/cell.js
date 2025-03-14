@@ -1,5 +1,5 @@
-import { CELL_SIZE, COLOR_ALIVE, COLOR_DEAD } from "./config.js";
-import { cellSize } from "./main.js";
+import { COLOR_ALIVE, COLOR_DEAD } from "./config.js";
+
 
 export class Cell {
     constructor(ctx, x, y){
@@ -7,6 +7,7 @@ export class Cell {
         this.x = x;
         this.y = y;
         this.state = Math.random() > 0.7;
+        this.cellSize = 20;
     }
     
     getCellState() {
@@ -25,10 +26,18 @@ export class Cell {
         return this.neighbors
     }
 
+    setCellSize(cellSize) {
+        this.cellSize = cellSize;
+    }
+
+    getCellSize() {
+        return this.cellSize
+    }
+
     drawCell() {
         this.ctx.fillStyle = this.getCellState() ? COLOR_ALIVE : COLOR_DEAD;
         // this.ctx.fillRect(this.x*CELL_SIZE, this.y*CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        this.ctx.fillRect(this.x*cellSize, this.y*cellSize, cellSize, cellSize);
+        this.ctx.fillRect(this.x*this.cellSize, this.y*this.cellSize, this.cellSize, this.cellSize);
     }
 
     nextGeneration() {
