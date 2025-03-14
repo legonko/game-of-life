@@ -2,12 +2,13 @@ import { COLOR_ALIVE, COLOR_DEAD } from "./config.js";
 
 
 export class Cell {
-    constructor(ctx, x, y){
+    constructor(ctx, x, y, cellSize){
         this.ctx = ctx;
         this.x = x;
         this.y = y;
         this.state = Math.random() > 0.7;
-        this.cellSize = 20;
+        this.cellSize = cellSize;
+    
     }
     
     getCellState() {
@@ -36,8 +37,7 @@ export class Cell {
 
     drawCell() {
         this.ctx.fillStyle = this.getCellState() ? COLOR_ALIVE : COLOR_DEAD;
-        // this.ctx.fillRect(this.x*CELL_SIZE, this.y*CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        this.ctx.fillRect(this.x*this.cellSize, this.y*this.cellSize, this.cellSize, this.cellSize);
+        this.ctx.fillRect(this.x*this.getCellSize(), this.y*this.getCellSize(), this.getCellSize(), this.getCellSize());
     }
 
     nextGeneration() {

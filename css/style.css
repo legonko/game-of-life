@@ -101,7 +101,7 @@ input[type="range"]::-moz-range-thumb {
     align-items: center;
 
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .control-panel {

@@ -14,7 +14,7 @@ export class GameMap {
         for (let y = 0; y < this.height; y++) {
             this.gameMap[y] = [];
             for (let x = 0; x < this.width; x++) {
-                this.gameMap[y][x] = new Cell(this.ctx, x, y);
+                this.gameMap[y][x] = new Cell(this.ctx, x, y, this.cellSize);
                 this.gameMap[y][x].drawCell();
             }
         }
@@ -74,6 +74,7 @@ export class GameMap {
     }
 
     resizeCells(cellSize) {
+        this.cellSize = cellSize;
         this.gameMap.map(row => {
             row.map(currentCell => {
                 currentCell.setCellSize(cellSize);

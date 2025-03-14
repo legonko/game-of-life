@@ -104,6 +104,3 @@ function updateSimulationSpeed() {
     const val = this.max - this.value;
     game.setSimulatoinSpeed(val);
 }
-
-updateSliderBackground();
-

@@ -15,6 +15,7 @@ export class Game {
     }
 
     run() {
+        if (this.running) return;
         this.running = true;
         this.gameloop();
     }
