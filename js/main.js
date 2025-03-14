@@ -81,7 +81,7 @@ function handleCanvasClick(event) {
 
 function resizeCanvas() {
     canvas.width = window.innerWidth - 60; // + padding
-    canvas.height = window.innerHeight * 0.8;
+    canvas.height = window.innerHeight * 0.75;
 
     let cellSize = parseInt(Math.min(canvas.width / WIDTH, canvas.height / HEIGHT));
     canvas.width = WIDTH * cellSize;

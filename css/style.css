@@ -92,7 +92,7 @@ input[type="range"]::-moz-range-thumb {
     align-items: center;
 
     padding-top: 20px;
-    gap: 20px;
+    gap: 16px;
 }
 
 .game-window {
@@ -176,15 +176,15 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 2560px) {
     .main-control__item:not(.speed-control) {
         max-width: 14vw;
-        height: 80px;
-        font-size: 36px;
+        height: 60px;
+        font-size: 30px;
     }
     .main-control {
-        gap: 30px;
+        gap: 20px;
     }
     .speed-control {
-        gap: 24px;
-        font-size: 36px;
+        gap: 20px;
+        font-size: 30px;
     }
 
 }
@@ -192,7 +192,7 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 1440px) {
     .main-control__item:not(.speed-control) {
         width: 16vw;
-        height: 46px; 
+        height: 40px; 
         font-size: 20px;
     }
     .speed-control {
@@ -204,7 +204,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 1024px) {
     .main-control__item:not(.speed-control) {
-        height: 40px;
+        height: 32px;
         font-size: 18px;
     }
     .main-control {
