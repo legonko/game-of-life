@@ -4,6 +4,7 @@ import { WIDTH, HEIGHT } from "./config.js";
 
 let isDrawing = false;
 let changedCells = new Set();
+setViewportHeight();
 let game = new Game(WIDTH, HEIGHT);
 
 const canvas = document.getElementById("canvas");
