@@ -199,6 +199,10 @@ svg * {
     transition-property: fill, stroke;
 }
 
+svg {
+    display: block;
+}
+
 /**
 Приведение рамок таблиц в классический 'collapse' вид
 */
