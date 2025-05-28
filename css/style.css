@@ -33,7 +33,8 @@
 }
 
 main {
-    height: 100vh;
+    /* height: 100vh; */
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -46,7 +47,12 @@ body{
     font-size: var(--font-basic);
     line-height: 1.5;
 }
-
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
 h1, h2, h3, h4, h5, h6{
     font-weight: 600;
 }
@@ -142,6 +148,7 @@ canvas {
     align-items: center;
     row-gap: 40px;
     width: 100%;
+    margin-bottom: 6px;
 }
 
 .control-panel__list {
