@@ -4,26 +4,9 @@ import { WIDTH, HEIGHT } from "./config.js";
 
 let isDrawing = false;
 let changedCells = new Set();
+let game = new Game(WIDTH, HEIGHT);
 
 const canvas = document.getElementById("canvas");
-
-// let isPortrait = window.innerWidth < window.innerHeight;
-// let game = new Game(isPortrait ? HEIGHT : WIDTH, isPortrait ? WIDTH : HEIGHT);
-const game = new Game(WIDTH, HEIGHT);
-
-window.addEventListener("resize", resizeCanvas);
-// window.addEventListener("orientationchange", () => {
-//     let newIsPortrait = window.innerWidth < window.innerHeight;
-
-//     if (newIsPortrait !== isPortrait) {
-//         isPortrait = newIsPortrait;
-//         game = new Game(isPortrait ? HEIGHT : WIDTH, isPortrait ? WIDTH : HEIGHT);
-//     }
-// });
-
-resizeCanvas();
-
-
 const btnRun = document.getElementById("run");
 const btnStop = document.getElementById("stop");
 const btnReset = document.getElementById("reset");
@@ -33,6 +16,7 @@ const slider = document.getElementById("speed");
 
 export let simulationSpeed = slider.value;
 
+window.addEventListener('resize', resizeCanvas);
 btnRun.addEventListener("click", () => game.run());
 btnStop.addEventListener("click", () => game.stop());
 btnReset.addEventListener("click", () => game.reset());
@@ -62,6 +46,16 @@ canvas.addEventListener("mouseleave", () => {
     changedCells.clear();
 });
 
+function calculateGrid(canvasWidth, canvasHeight, minCellSize = 20) {
+    const cols = Math.floor(canvasWidth / minCellSize);
+    const rows = Math.floor(canvasHeight / minCellSize);
+    const cellSize = Math.min(
+        Math.floor(canvasWidth / cols),
+        Math.floor(canvasHeight / rows)
+    );
+    return { cols, rows, cellSize };
+}
+
 function handleCanvasClick(event) {
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
@@ -80,15 +74,16 @@ function handleCanvasClick(event) {
 }
 
 function resizeCanvas() {
-    canvas.width = window.innerWidth - 60; // + padding
-    canvas.height = window.innerHeight * 0.75;
-
-    let cellSize = parseInt(Math.min(canvas.width / WIDTH, canvas.height / HEIGHT));
-    canvas.width = WIDTH * cellSize;
-    canvas.height = HEIGHT * cellSize;
-
+    const bounds = canvas.getBoundingClientRect();
+    canvas.width = bounds.width;
+    canvas.height = bounds.height;
+    const { cols, rows, cellSize } = calculateGrid(canvas.width, canvas.height);
+    game = new Game(cols, rows);
     game.gameMap.resizeCells(cellSize);
 }
+
+
+resizeCanvas();
 
 function updateSliderBackground() {
     const min = this.min;

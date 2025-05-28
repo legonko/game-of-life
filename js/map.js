@@ -38,31 +38,32 @@ export class GameMap {
         return numNeighbors
     }
 
-    updateAllNeighbors() {
-        this.gameMap.map(row => {
-            row.map(currentCell => {
-                let numNeighbors = this.getNeighbors(currentCell.x, currentCell.y);
-                currentCell.setCellNeighbors(numNeighbors);
+    forEachCell(func) {
+        this.gameMap.forEach(row => {
+            row.forEach(currentCell => {
+                func(currentCell);
             })
+        })
+    }
+
+    updateAllNeighbors() {
+        this.forEachCell(cell => {
+            let numNeighbors = this.getNeighbors(cell.x, cell.y);
+            cell.setCellNeighbors(numNeighbors);
         })
     }
 
     updateMap() {
-        this.gameMap.map(row => {
-            row.map(currentCell => {
-                currentCell.nextGeneration();
-                currentCell.drawCell();
-            })
+        this.forEachCell(cell => {
+            cell.nextGeneration();
+            cell.drawCell();
         })
-        
     }
 
     clearMap() {
-        this.gameMap.map(row => {
-            row.map(currentCell => {
-                currentCell.setCellState(false);
-                currentCell.drawCell();
-            })
+        this.forEachCell(cell => {
+            cell.setCellState(false);
+            cell.drawCell();
         })
     }
 
@@ -75,11 +76,9 @@ export class GameMap {
 
     resizeCells(cellSize) {
         this.cellSize = cellSize;
-        this.gameMap.map(row => {
-            row.map(currentCell => {
-                currentCell.setCellSize(cellSize);
-                currentCell.drawCell();
-            })
+        this.forEachCell(cell => {
+            cell.setCellSize(cellSize);
+            cell.drawCell();
         })
     }
 }

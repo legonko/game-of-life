@@ -8,29 +8,90 @@
     <link rel="stylesheet" href="css/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div class="container">
-            <section class="game-window">
-                <canvas class="game-window__canvas" id="canvas" ></canvas>
-            </section>
-            <section class="control-panel">
-                <div class="main-control">
-                    <ul class="main-control__buttons">
-                        <li><button class="main-control__item" id="random">Random</button></li>
-                        <li><button class="main-control__item" id="run">Run</button></li>
-                        <li><button class="main-control__item" id="stop">Stop</button></li>
-                        <li><button class="main-control__item" id="step">Step over</button></li>
-                        <li><button class="main-control__item" id="reset">Reset</button></li>
-                    </ul>
-                    <div class="speed-control main-control__item">
-                        <input type="range" id="speed" name="simulation-speed" min="10" max="200" />
-                        <label for="speed" class="speed-slider-label">Simulation speed</label>
-                    </div>
+        <section class="game-window container section">
+            <canvas class="game-window__canvas" id="canvas" ></canvas>
+        </section>
+        <section class="control-panel container section">
+            <div class="control-panel__body">
+                <ul class="control-panel__list">
+                    <li class="control-panel__item">
+                        <button class="control-panel__button button" id="random">
+                            <span class="button__text hidden-mobile">Random</span>
+                            <span class="button__icon visible-mobile">
+                                <svg
+                                viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve">
+                                <path id="path18074" inkscape:connector-curvature="0" d="M935.926,42.203v186.061H763.958c-54.408,0-114.484,26.559-164.729,77.32
+                                    c-50.242,50.761-104.842,126.065-191.527,249.904c-87.076,124.394-135.567,199.565-165.807,233.346
+                                    c-30.24,33.78-25.376,30.882-69.388,30.882H2.08H0v147.863h2.08h170.427c66.078,0,132.54-27.619,179.515-80.093
+                                    c46.975-52.475,91.312-125.164,176.742-247.208c85.82-122.601,140.381-195.159,175.512-230.651
+                                    c35.129-35.491,36.641-33.5,59.685-33.5h171.967v194.147L1200,306.276L935.926,42.203z M0,228.263v147.863h2.08h170.427
+                                    c44.012,0,39.148-2.975,69.388,30.805c19.456,21.734,51.507,67.826,91.49,125.915c5.419-7.773,7.973-11.521,13.708-19.716
+                                    c21.78-31.114,41.563-59.187,59.838-84.79c6.36-8.91,11.688-15.939,17.714-24.259c-27.021-39.039-49.525-70.001-72.623-95.803
+                                    c-46.975-52.474-113.437-80.015-179.515-80.015H2.079H0L0,228.263z M935.926,629.727v189.988H763.958
+                                    c-23.043,0-24.554,1.915-59.684-33.577c-23.237-23.477-56.146-65.093-99.809-124.76c-5.281,7.49-9.555,13.418-15.095,21.333
+                                    c-30.571,43.674-51.648,75.183-73.777,107.816c31.395,41.578,58.12,73.875,83.637,99.652
+                                    c50.242,50.763,110.319,77.397,164.729,77.397h171.968v190.22L1200,893.801L935.926,629.727z"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                    </li>
+                    <li class="control-panel__item">
+                        <button class="control-panel__button button" id="run">
+                            <span class="button__text hidden-mobile">Run</span>
+                            <span class="button__icon visible-mobile">
+                                <svg fill="#000000" viewBox="0 0 210 210" xml:space="preserve">
+                                <path d="M179.07,105L30.93,210V0L179.07,105z"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                    </li>
+                    <li class="control-panel__item">
+                        <button class="control-panel__button button" id="stop">
+                            <span class="button__text hidden-mobile">Stop</span>
+                            <span class="button__icon visible-mobile">
+                                <svg viewBox="0 0 10.334 10.334" xml:space="preserve">
+                                <g>
+                                    <path style="fill:#030104;" d="M10.333,9.816c0,0.285-0.231,0.518-0.517,0.518H0.517C0.233,10.334,0,10.102,0,9.816V0.517
+                                        C0,0.232,0.231,0,0.517,0h9.299c0.285,0,0.517,0.231,0.517,0.517V9.816z"/>
+                                </g>
+                                </svg>
+                            </span>
+                        </button>
+
+                    </li>
+                    <li class="control-panel__item">
+                        <button class="control-panel__button button" id="step">
+                            <span class="button__text hidden-mobile">Step over</span>
+                            <span class="button__icon visible-mobile">
+                                <svg viewBox="0 0 16 16" fill="#000000">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.25 5.75v-4h-1.5v2.542c-1.145-1.359-2.911-2.209-4.84-2.209-3.177 0-5.92 2.307-6.16 5.398l-.02.269h1.501l.022-.226c.212-2.195 2.202-3.94 4.656-3.94 1.736 0 3.244.875 4.05 2.166h-2.83v1.5h4.163l.962-.975V5.75h-.004zM8 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="control-panel__item">
+                        <button class="control-panel__button button" id="reset">
+                            <span class="button__text hidden-mobile">Reset</span>
+                            <span class="button__icon visible-mobile">
+                                <svg fill="#000000" viewBox="0 0 1920 1920">
+                                    <path d="M960 0v112.941c467.125 0 847.059 379.934 847.059 847.059 0 467.125-379.934 847.059-847.059 847.059-467.125 0-847.059-379.934-847.059-847.059 0-267.106 126.607-515.915 338.824-675.727v393.374h112.94V112.941H0v112.941h342.89C127.058 407.38 0 674.711 0 960c0 529.355 430.645 960 960 960s960-430.645 960-960S1489.355 0 960 0" fill-rule="evenodd"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="control-panel__slider">
+                    <input type="range" id="speed" name="simulation-speed" min="10" max="200" />
+                    <label for="speed" class="control-panel__slider-label">Simulation speed</label>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
     <script type="module" src="./js/main.js"></script>
 </body>
